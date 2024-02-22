@@ -22,15 +22,15 @@ class User(models.Model):
 
 class Charity(models.Model):
     id = models.AutoField(primary_key=True)
-    user_id = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
 class Donor(models.Model):
     id = models.AutoField(primary_key=True)
-    user_id = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
 class Donation(models.Model):
     id = models.AutoField(primary_key=True)
-    donor_id = models.ForeignKey(Donor, on_delete=models.CASCADE)
+    donor = models.ForeignKey(Donor, on_delete=models.CASCADE)
     image_data = models.CharField(max_length=255)
     description = models.TextField()
     inventory = models.IntegerField()
@@ -41,7 +41,7 @@ class Donation(models.Model):
 
 class Cart(models.Model):
     id = models.AutoField(primary_key=True)
-    charity_id = models.ForeignKey(Charity, on_delete=models.CASCADE)
+    charity = models.ForeignKey(Charity, on_delete=models.CASCADE)
     quantity = models.IntegerField()
     status = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -49,13 +49,13 @@ class Cart(models.Model):
 
 class CartedDonation(models.Model):
     id = models.AutoField(primary_key=True)
-    donation_id = models.ForeignKey(Donation, on_delete=models.CASCADE)
-    cart_id = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    donation = models.ForeignKey(Donation, on_delete=models.CASCADE)
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
 
 class Order(models.Model):
     id = models.AutoField(primary_key=True)
-    donation_id = models.ForeignKey(Donation, on_delete=models.CASCADE)
-    charity_id = models.ForeignKey(Charity, on_delete=models.CASCADE)
+    donation = models.ForeignKey(Donation, on_delete=models.CASCADE)
+    charity = models.ForeignKey(Charity, on_delete=models.CASCADE)
     donation_receipt = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -69,5 +69,5 @@ class Category(models.Model):
 
 class DonationCategory(models.Model):
     id = models.AutoField(primary_key=True)
-    donation_id = models.ForeignKey(Donation, on_delete=models.CASCADE)
-    category_id = models.ForeignKey(Category, on_delete=models.CASCADE)
+    donation = models.ForeignKey(Donation, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
