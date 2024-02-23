@@ -5,6 +5,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = '__all__'
+        read_only_fields = ['created', 'updated', 'id']
 
 class CharitySerializer(serializers.ModelSerializer):
     class Meta:
@@ -20,11 +21,13 @@ class DonationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Donation
         fields = '__all__'
+        read_only_fields = ['created', 'updated', 'id']
 
 class CartSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cart
         fields = '__all__'
+        read_only_fields = ['created', 'updated', 'id']
 
 class CartedDonationSerializer(serializers.ModelSerializer):
     class Meta:
@@ -35,11 +38,13 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = '__all__'
+        read_only_fields = ['created', 'updated', 'id']
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = '__all__'
+        read_only_fields = ['created', 'updated', 'id']
 
 class DonationCategorySerializer(serializers.ModelSerializer):
     class Meta:
