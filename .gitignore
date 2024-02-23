@@ -3,3 +3,4 @@ food_connect_app/__pycache__/
 food_connect_project/__pycache__/
 food_connect_app/migrations/__pycache__/
 __pycache__
+*.pyc

@@ -60,6 +60,34 @@ To start a local server, run the following command.
 python3 manage.py runserver 8080
 ```
 
+### Connecting to PostgreSQL Database
+
+To link your database to a postgresql database, first install 'psycopg2' module in your virtual environment to get Python to operate with Postgres:
+
+```
+pip install psycopg2
+```
+
+Create a database in your Postgres server. Then alter the following code in your settings.py file of your project:
+
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'your_database_name',
+        'HOST': 'localhost',  # Or your database host
+        'PORT': '',            # Leave it blank for default port
+    }
+}
+```
+
+Run the following commands to execute migrations:
+
+```
+python3.11 manage.py makemigrations
+python3.11 manage.py migrate
+```
+
 ## Authors
 
 <p>
